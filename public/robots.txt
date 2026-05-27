@@ -1,0 +1,20 @@
+# ============================================================
+# robots.txt — AO AI Solutions
+# Controls which pages search engines are allowed to crawl.
+# MANUAL EDIT: Add new Disallow lines for any private routes.
+# ============================================================
+
+User-agent: *
+
+# Allow all public marketing pages
+Allow: /
+
+# Block private portals from being indexed by search engines
+Disallow: /portal/
+Disallow: /admin/
+
+# Block any API or internal routes
+Disallow: /api/
+
+# Sitemap location — submit this URL in Google Search Console
+Sitemap: https://aoaisolutions.dev/sitemap.xml
