@@ -233,7 +233,7 @@ export default function LandingPage() {
         boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.06)' : 'none',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img src="/logo-transparent.png" alt="AOAI Solutions" className="ao-logo-nav" />
+          <img src="/aoai-bubble-logo.jpeg" alt="AOAI Solutions" className="ao-logo-nav" style={{ borderRadius: '50%', objectFit: 'cover' }} />
           <span className="ao-nav-label" style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.15em', color: '#B8941F', textTransform: 'uppercase' }}>
             AI SOLUTIONS
           </span>
@@ -280,7 +280,7 @@ export default function LandingPage() {
 
             {/* Official AOAI brand logo */}
             <img
-              src="/logo-brand.png"
+              src="/ao-logo.jpg"
               alt="AOAI Solutions"
               className="ao-logo-hero"
             />
@@ -375,7 +375,7 @@ export default function LandingPage() {
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '14px' }}>What We Build</p>
             <h2 style={{ fontSize: 'clamp(26px, 4vw, 46px)', fontWeight: 800, color: '#0F1115', marginBottom: '14px', letterSpacing: '-0.02em' }}>Full-Spectrum AI Services</h2>
-            <p style={{ fontSize: '16px', color: '#4A5568', fontWeight: 300, maxWidth: '540px', margin: '0 auto' }}>
+            <p style={{ fontSize: '16px', color: '#4A5568', fontWeight: 300, whiteSpace: 'nowrap', margin: '0 auto' }}>
               Everything your business needs to compete, automate, and grow in the AI era.
             </p>
             <div style={{ width: '52px', height: '3px', background: 'linear-gradient(90deg, #D4AF37, #E8C84A)', borderRadius: '4px', margin: '20px auto 0' }} />
@@ -499,7 +499,7 @@ export default function LandingPage() {
             {/* Contact Card */}
             <div style={{ background: 'rgba(255,255,255,0.94)', borderRadius: '28px', padding: '44px 36px', boxShadow: '0 24px 72px rgba(0,0,0,0.12)', border: '1px solid rgba(212,175,55,0.3)', backdropFilter: 'blur(12px)' }}>
               <div style={{ marginBottom: '24px' }}>
-                <img src="/logo-transparent.png" alt="AOAI Solutions" style={{ height: '52px', objectFit: 'contain', display: 'block', filter: 'drop-shadow(0 2px 8px rgba(212,175,55,0.3))' }} />
+                <img src="/aoai-bubble-logo.jpeg" alt="AOAI Solutions" style={{ height: '52px', width: '52px', objectFit: 'cover', display: 'block', borderRadius: '50%', boxShadow: '0 2px 8px rgba(212,175,55,0.3)' }} />
               </div>
               <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#0F1115', marginBottom: '4px' }}>Michael Smith</h3>
               <p style={{ fontSize: '12px', color: '#718096', marginBottom: '28px', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Founder & CEO · AI Engineer</p>
@@ -545,7 +545,7 @@ export default function LandingPage() {
 
       {/* ── Footer ──────────────────────────────────────────────────────────── */}
       <footer style={{ background: '#0F1115', color: '#fff', padding: '64px 24px 36px', textAlign: 'center' }}>
-        <img src="/logo-white.png" alt="AOAI Solutions" className="ao-logo-footer" />
+        <img src="/ao-logo.jpg" alt="AOAI Solutions" className="ao-logo-footer" />
         <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: 'rgba(212,175,55,0.8)', textTransform: 'uppercase', marginBottom: '10px' }}>
           AI SOLUTIONS
         </p>
