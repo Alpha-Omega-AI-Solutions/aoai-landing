@@ -219,7 +219,7 @@ export default function LandingPage() {
         padding: '9px 24px', textAlign: 'center', fontSize: '12px',
         fontWeight: 700, letterSpacing: '0.1em', color: '#0F1115', textTransform: 'uppercase',
       }}>
-        ✦ &nbsp; Grand Launch December 2026 — Pre-Launch Consultations Now Booking &nbsp; ✦
+        ✦ &nbsp; Grand Launch August 2026 — Pre-Launch Consultations Now Booking &nbsp; ✦
       </div>
 
       {/* ── Sticky Nav ──────────────────────────────────────────────────────── */}
@@ -238,14 +238,27 @@ export default function LandingPage() {
             AI SOLUTIONS
           </span>
         </div>
-        <a href="#contact" style={{
-          background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115',
-          padding: '10px 22px', borderRadius: '50px', fontWeight: 700, fontSize: '13px',
-          textDecoration: 'none', letterSpacing: '0.04em',
-          boxShadow: '0 4px 16px rgba(212,175,55,0.3)', whiteSpace: 'nowrap',
-        }}>
-          Book Consultation →
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <a href="/catalog.html" style={{
+            fontSize: '13px', fontWeight: 600, color: '#4A5568',
+            textDecoration: 'none', padding: '8px 16px', borderRadius: '8px',
+            border: '1px solid rgba(212,175,55,0.35)', letterSpacing: '0.01em',
+            transition: 'all 0.2s', whiteSpace: 'nowrap',
+          }}
+          onMouseEnter={e => { e.target.style.background = 'rgba(212,175,55,0.06)'; e.target.style.color = '#B8941F'; }}
+          onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = '#4A5568'; }}
+          >
+            Pricing Catalog
+          </a>
+          <a href="#contact" style={{
+            background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115',
+            padding: '10px 22px', borderRadius: '50px', fontWeight: 700, fontSize: '13px',
+            textDecoration: 'none', letterSpacing: '0.04em',
+            boxShadow: '0 4px 16px rgba(212,175,55,0.3)', whiteSpace: 'nowrap',
+          }}>
+            Book Consultation →
+          </a>
+        </div>
       </nav>
 
       {/* ══════════════════════════════════════════════════════════════════════ */}
@@ -272,7 +285,7 @@ export default function LandingPage() {
           padding: '7px 18px', fontSize: '11px', fontWeight: 700,
           letterSpacing: '0.12em', color: '#8A6B1A', textTransform: 'uppercase', zIndex: 20,
         }}>
-          🚀 Grand Launch December 2026
+          🚀 Grand Launch August 2026
         </div>
 
         <div className="ao-hero-content">
@@ -568,7 +581,7 @@ export default function LandingPage() {
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '24px' }}>
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>© 2026 AOAI Solutions. All rights reserved. | aoaisolutions.dev</p>
-          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.15)', marginTop: '6px' }}>🚀 Grand Launch December 2026</p>
+          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.15)', marginTop: '6px' }}>🚀 Grand Launch August 2026</p>
         </div>
       </footer>
 
