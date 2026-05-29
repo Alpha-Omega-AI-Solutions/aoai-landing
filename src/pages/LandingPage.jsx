@@ -140,6 +140,19 @@ const LANDING_STYLES = `
   }
   .ao-nav-label { display: inline-block; }
 
+  #contact { scroll-margin-top: 70px; }
+
+  .ao-contact-layout {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .ao-contact-layout { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 900px) {
     .ao-hero-overlay {
       background: linear-gradient(
@@ -168,7 +181,7 @@ const LANDING_STYLES = `
 `
 
 export default function LandingPage() {
-  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', service: '', message: '' })
+  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', website: '', service: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [formError, setFormError] = useState('')
@@ -190,7 +203,7 @@ export default function LandingPage() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           name: form.name, company: form.company, email: form.email,
-          phone: form.phone, service: form.service, message: form.message,
+          phone: form.phone, website: form.website, service: form.service, message: form.message,
           _subject: `[AOAI] New Consultation Request — ${form.name}`,
         }),
       })
@@ -296,6 +309,7 @@ export default function LandingPage() {
               src="/ao-logo.jpg"
               alt="AOAI Solutions"
               className="ao-logo-hero"
+              style={{ opacity: 0.36 }}
             />
 
             <p style={{
@@ -405,153 +419,189 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Consultation Form ────────────────────────────────────────────────── */}
-      <section id="contact" style={{ padding: '96px 24px', background: '#fff' }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '52px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '14px' }}>Let's Build Together</p>
-            <h2 style={{ fontSize: 'clamp(26px, 4vw, 46px)', fontWeight: 800, color: '#0F1115', marginBottom: '14px', letterSpacing: '-0.02em' }}>Book a Free Consultation</h2>
+      {/* ── Contact Section ──────────────────────────────────────────────────── */}
+      <section id="contact" style={{ padding: '100px 24px 112px', background: 'linear-gradient(180deg, #F0F5FF 0%, #E8EFFF 100%)' }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto' }}>
+
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '14px' }}>
+              Start Your Growth Journey
+            </p>
+            <h2 style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 800, color: '#0F1115', marginBottom: '14px', letterSpacing: '-0.02em' }}>
+              Let's Build Smarter Systems Together
+            </h2>
             <div style={{ width: '52px', height: '3px', background: 'linear-gradient(90deg, #D4AF37, #E8C84A)', borderRadius: '4px', margin: '0 auto 22px' }} />
-            <p style={{ fontSize: '16px', color: '#4A5568', fontWeight: 300, lineHeight: 1.65 }}>
-              Tell us about your business and goals. We'll reach out within 24 hours to schedule a free strategy call.
+            <p style={{ fontSize: '16px', color: '#4A5568', fontWeight: 300, lineHeight: 1.7, maxWidth: '560px', margin: '0 auto' }}>
+              Tell us where your business is today, what you want to improve, and where you want to grow. AOAI Solutions will help identify the best path forward.
             </p>
           </div>
 
-          {submitted ? (
-            <div style={{ textAlign: 'center', padding: '56px 32px', background: 'linear-gradient(145deg, #D8E6FF, #EEF3FF)', borderRadius: '24px', border: '1px solid rgba(212,175,55,0.3)' }}>
-              <div style={{ fontSize: '54px', marginBottom: '20px' }}>✅</div>
-              <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#0F1115', marginBottom: '10px' }}>Message Received!</h3>
-              <p style={{ color: '#4A5568', fontWeight: 300, fontSize: '16px', lineHeight: 1.6 }}>We'll be in touch within 24 hours to schedule your free strategy call.</p>
+          {/* Two-column layout */}
+          <div className="ao-contact-layout">
+
+            {/* Form Card */}
+            <div style={{
+              background: '#fff', borderRadius: '24px', padding: '44px 40px',
+              border: '1px solid rgba(122,156,255,0.14)',
+              borderTop: '3px solid #D4AF37',
+              boxShadow: '0 12px 52px rgba(122,156,255,0.13)',
+            }}>
+              {submitted ? (
+                <div style={{ textAlign: 'center', padding: '56px 24px' }}>
+                  <div style={{ fontSize: '52px', marginBottom: '20px' }}>✅</div>
+                  <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#0F1115', marginBottom: '10px' }}>Message Received!</h3>
+                  <p style={{ color: '#4A5568', fontWeight: 300, fontSize: '16px', lineHeight: 1.65 }}>
+                    We'll be in touch within 24 hours to schedule your complimentary discovery call.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div className="ao-form-grid-2">
+                    {[
+                      { key: 'name', label: 'Full Name *', placeholder: 'Jane Smith', type: 'text', required: true },
+                      { key: 'company', label: 'Business Name *', placeholder: 'Acme Corp', type: 'text', required: true },
+                    ].map(f => (
+                      <div key={f.key}>
+                        <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{f.label}</label>
+                        <input type={f.type} required={f.required} placeholder={f.placeholder} value={form[f.key]}
+                          onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
+                          style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="ao-form-grid-2">
+                    {[
+                      { key: 'email', label: 'Email *', placeholder: 'jane@company.com', type: 'email', required: true },
+                      { key: 'phone', label: 'Phone (Optional)', placeholder: '202-000-0000', type: 'tel', required: false },
+                    ].map(f => (
+                      <div key={f.key}>
+                        <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{f.label}</label>
+                        <input type={f.type} required={f.required} placeholder={f.placeholder} value={form[f.key]}
+                          onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
+                          style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Website URL (Optional)</label>
+                    <input type="url" placeholder="https://yourbusiness.com" value={form.website}
+                      onChange={e => setForm(p => ({ ...p, website: e.target.value }))}
+                      style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Service Interest</label>
+                    <select value={form.service} onChange={e => setForm(p => ({ ...p, service: e.target.value }))}
+                      style={{ ...inputStyle }} onFocus={onFocus} onBlur={onBlur}>
+                      <option value="">Select a service...</option>
+                      <option value="digital-presence-assessment">Digital Presence Assessment</option>
+                      <option value="lead-capture-optimization">Lead Capture Optimization</option>
+                      <option value="local-seo">Local SEO</option>
+                      <option value="website-enhancement">Website Enhancement</option>
+                      <option value="automation">Automation</option>
+                      <option value="ai-concierge">AI Concierge</option>
+                      <option value="full-website-rebuild">Full Website Rebuild</option>
+                      <option value="digital-ecosystem-package">Digital Ecosystem Package</option>
+                      <option value="growth-partner-retainer">Growth Partner Retainer</option>
+                      <option value="not-sure">Not Sure Yet</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Message / Project Goals</label>
+                    <textarea rows={4} placeholder="Describe your business, current challenges, and what you'd like to achieve..."
+                      value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
+                      style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
+                      onFocus={onFocus} onBlur={onBlur} />
+                  </div>
+                  {formError && <p style={{ color: '#e53e3e', fontSize: '13px', textAlign: 'center' }}>{formError}</p>}
+                  <button type="submit" disabled={submitting} style={{
+                    background: submitting ? 'rgba(212,175,55,0.6)' : 'linear-gradient(135deg, #D4AF37, #E8C84A)',
+                    color: '#0F1115', padding: '16px 36px', borderRadius: '50px', fontWeight: 700,
+                    fontSize: '15px', border: 'none', cursor: submitting ? 'not-allowed' : 'pointer',
+                    letterSpacing: '0.04em', boxShadow: '0 6px 24px rgba(212,175,55,0.35)',
+                    transition: 'all 0.2s', fontFamily: 'inherit', width: '100%',
+                  }}>
+                    {submitting ? 'Sending...' : 'Request Consultation →'}
+                  </button>
+                </form>
+              )}
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px', background: '#fff', borderRadius: '24px', padding: '40px', border: '1px solid rgba(122,156,255,0.15)', boxShadow: '0 8px 40px rgba(122,156,255,0.12)' }}>
-              <div className="ao-form-grid-2">
-                {[
-                  { key: 'name', label: 'Full Name *', placeholder: 'Jane Smith', type: 'text', required: true },
-                  { key: 'company', label: 'Company Name *', placeholder: 'Acme Corp', type: 'text', required: true },
-                ].map(f => (
-                  <div key={f.key}>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{f.label}</label>
-                    <input type={f.type} required={f.required} placeholder={f.placeholder} value={form[f.key]}
-                      onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
-                      style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="ao-form-grid-2">
-                {[
-                  { key: 'email', label: 'Email *', placeholder: 'jane@company.com', type: 'email', required: true },
-                  { key: 'phone', label: 'Phone (Optional)', placeholder: '202-000-0000', type: 'tel', required: false },
-                ].map(f => (
-                  <div key={f.key}>
-                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{f.label}</label>
-                    <input type={f.type} required={f.required} placeholder={f.placeholder} value={form[f.key]}
-                      onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
-                      style={inputStyle} onFocus={onFocus} onBlur={onBlur}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Service Interest</label>
-                <select value={form.service} onChange={e => setForm(p => ({ ...p, service: e.target.value }))}
-                  style={{ ...inputStyle }} onFocus={onFocus} onBlur={onBlur}>
-                  <option value="">Select a service...</option>
-                  <option value="ai-automation">AI Automation</option>
-                  <option value="full-stack-development">Full Stack Development</option>
-                  <option value="cloud-systems">Cloud Systems</option>
-                  <option value="ai-integrations">AI Integrations</option>
-                  <option value="lead-capture-crm">Lead Capture & CRM</option>
-                  <option value="meta-pixel-facebook-ads">Meta Pixel & Facebook Ads</option>
-                  <option value="analytics-conversion">Analytics & Conversion</option>
-                  <option value="branding-systems">Branding Systems</option>
-                  <option value="full-service">Full Service Package</option>
-                  <option value="not-sure">Not Sure Yet — Let's Talk</option>
-                </select>
-              </div>
-              <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#0F1115', marginBottom: '7px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Tell Us About Your Project</label>
-                <textarea rows={4} placeholder="Describe your business goals and what you'd like to build..."
-                  value={form.message} onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                  style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.6 }}
-                  onFocus={onFocus} onBlur={onBlur}
-                />
-              </div>
-              {formError && <p style={{ color: '#e53e3e', fontSize: '13px', textAlign: 'center' }}>{formError}</p>}
-              <button type="submit" disabled={submitting} style={{
-                background: submitting ? 'rgba(212,175,55,0.6)' : 'linear-gradient(135deg, #D4AF37, #E8C84A)',
-                color: '#0F1115', padding: '16px 36px', borderRadius: '50px', fontWeight: 700,
-                fontSize: '15px', border: 'none', cursor: submitting ? 'not-allowed' : 'pointer',
-                letterSpacing: '0.04em', boxShadow: '0 6px 24px rgba(212,175,55,0.35)',
-                transition: 'all 0.2s', fontFamily: 'inherit', width: '100%',
+
+            {/* Right column */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+
+              {/* Prefer to Talk First card */}
+              <div style={{
+                background: '#fff', borderRadius: '24px', padding: '36px 32px',
+                border: '1px solid rgba(212,175,55,0.25)',
+                boxShadow: '0 8px 36px rgba(122,156,255,0.1)',
+                display: 'flex', flexDirection: 'column', gap: '20px',
               }}>
-                {submitting ? 'Sending...' : 'Submit Consultation Request →'}
-              </button>
-              <p style={{ textAlign: 'center', fontSize: '12px', color: '#718096', fontWeight: 300 }}>
-                Or reach us directly: &nbsp;
-                <a href="tel:2024253161" style={{ color: '#D4AF37', fontWeight: 600, textDecoration: 'none' }}>202.425.3161</a>
-                &nbsp;|&nbsp;
-                <a href="mailto:michael.smith@aoaisolutions.dev" style={{ color: '#D4AF37', fontWeight: 600, textDecoration: 'none' }}>michael.smith@aoaisolutions.dev</a>
-              </p>
-            </form>
-          )}
+                <div>
+                  <p style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.22em', color: '#D4AF37', textTransform: 'uppercase', marginBottom: '10px' }}>Discovery First</p>
+                  <h3 style={{ fontSize: '21px', fontWeight: 800, color: '#0F1115', marginBottom: '10px', letterSpacing: '-0.01em' }}>Prefer to Talk First?</h3>
+                  <div style={{ width: '32px', height: '2px', background: 'linear-gradient(90deg, #D4AF37, #E8C84A)', borderRadius: '4px', marginBottom: '16px' }} />
+                  <p style={{ fontSize: '14px', color: '#4A5568', lineHeight: 1.75, fontWeight: 300 }}>
+                    Start with a complimentary discovery call so we can understand your business, your current systems, and your growth goals.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '13px' }}>
+                  {[
+                    { href: 'tel:2024253161', icon: '📞', label: '202.425.3161' },
+                    { href: 'mailto:michael.smith@aoaisolutions.dev', icon: '✉️', label: 'michael.smith@aoaisolutions.dev' },
+                    { href: 'https://www.aoaisolutions.dev', icon: '🌐', label: 'aoaisolutions.dev' },
+                  ].map(c => (
+                    <a key={c.href} href={c.href} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#0F1115', textDecoration: 'none', fontSize: '14px', fontWeight: 500, wordBreak: 'break-all' }}>
+                      <span style={{ background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', borderRadius: '10px', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', flexShrink: 0, boxShadow: '0 4px 12px rgba(212,175,55,0.28)' }}>{c.icon}</span>
+                      {c.label}
+                    </a>
+                  ))}
+                </div>
+                <a href="tel:2024253161" style={{ display: 'block', background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115', padding: '13px 24px', borderRadius: '50px', fontWeight: 700, fontSize: '14px', textDecoration: 'none', textAlign: 'center', boxShadow: '0 6px 20px rgba(212,175,55,0.35)', letterSpacing: '0.04em' }}>
+                  Schedule a Discovery Call →
+                </a>
+              </div>
+
+              {/* Trust strip */}
+              <div style={{ background: 'rgba(255,255,255,0.8)', borderRadius: '18px', padding: '20px 24px', border: '1px solid rgba(122,156,255,0.13)', backdropFilter: 'blur(8px)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                  {[{ icon: '⚡', label: '24hr Response' }, { icon: '📍', label: 'DC Metro Area' }, { icon: '🔒', label: 'Confidential' }, { icon: '🤝', label: 'No Obligation' }].map(b => (
+                    <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 500, color: '#4A5568', background: 'rgba(122,156,255,0.07)', borderRadius: '50px', padding: '5px 12px', border: '1px solid rgba(122,156,255,0.13)' }}>
+                      {b.icon} {b.label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Contact Card ─────────────────────────────────────────────────────── */}
-      <section style={{ padding: '80px 24px 96px', background: 'linear-gradient(145deg, #C9D9FF 0%, #8AACFF 50%, #7A9CFF 100%)', position: 'relative', overflow: 'hidden' }}>
+      {/* ── Final CTA Strip ───────────────────────────────────────────────────── */}
+      <section style={{ background: 'linear-gradient(145deg, #C9D9FF 0%, #8AACFF 50%, #7A9CFF 100%)', padding: '80px 24px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.4) 0%, transparent 65%)' }} />
-        <div style={{ maxWidth: '960px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: '52px' }}>
-            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#7A5C12', textTransform: 'uppercase', marginBottom: '12px' }}>Connect Directly</p>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', fontWeight: 800, color: '#0F1115', letterSpacing: '-0.02em' }}>Ready to Connect?</h2>
+        <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '32px', height: '2px', background: 'linear-gradient(90deg, #D4AF37, #E8C84A)', borderRadius: '4px' }} />
+            <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#7A5C12', textTransform: 'uppercase' }}>Growth · Automation · Digital Transformation</p>
+            <div style={{ width: '32px', height: '2px', background: 'linear-gradient(90deg, #D4AF37, #E8C84A)', borderRadius: '4px' }} />
           </div>
-          <div className="ao-contact-grid">
-
-            {/* Contact Card */}
-            <div style={{ background: 'rgba(255,255,255,0.94)', borderRadius: '28px', padding: '44px 36px', boxShadow: '0 24px 72px rgba(0,0,0,0.12)', border: '1px solid rgba(212,175,55,0.3)', backdropFilter: 'blur(12px)' }}>
-              <div style={{ marginBottom: '24px' }}>
-                <img src="/aoai-bubble-logo.jpeg" alt="AOAI Solutions" style={{ height: '52px', width: '52px', objectFit: 'cover', display: 'block', borderRadius: '50%', boxShadow: '0 2px 8px rgba(212,175,55,0.3)' }} />
-              </div>
-              <h3 style={{ fontSize: '22px', fontWeight: 800, color: '#0F1115', marginBottom: '4px' }}>Michael Smith</h3>
-              <p style={{ fontSize: '12px', color: '#718096', marginBottom: '28px', letterSpacing: '0.08em', textTransform: 'uppercase', fontWeight: 600 }}>Founder & CEO · AI Engineer</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {[
-                  { href: 'tel:2024253161', icon: '📞', label: '202.425.3161' },
-                  { href: 'mailto:michael.smith@aoaisolutions.dev', icon: '✉️', label: 'michael.smith@aoaisolutions.dev' },
-                  { href: 'https://aoaisolutions.dev', icon: '🌐', label: 'aoaisolutions.dev' },
-                ].map(c => (
-                  <a key={c.href} href={c.href} style={{ display: 'flex', alignItems: 'center', gap: '14px', color: '#0F1115', textDecoration: 'none', fontSize: '14px', fontWeight: 500, wordBreak: 'break-all' }}>
-                    <span style={{ background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', borderRadius: '12px', width: '44px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0, boxShadow: '0 4px 12px rgba(212,175,55,0.3)' }}>{c.icon}</span>
-                    {c.label}
-                  </a>
-                ))}
-              </div>
-              <a href="#contact" style={{ display: 'block', marginTop: '28px', background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115', padding: '13px 24px', borderRadius: '50px', fontWeight: 700, fontSize: '14px', textDecoration: 'none', textAlign: 'center', boxShadow: '0 6px 20px rgba(212,175,55,0.35)', letterSpacing: '0.04em' }}>
-                Book a Consultation →
-              </a>
-            </div>
-
-            {/* CTA panel — QR will be added once Popl digital card is live */}
-            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
-              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em', color: '#7A5C12', textTransform: 'uppercase' }}>Take the Next Step</p>
-              <p style={{ fontSize: '17px', fontWeight: 300, color: '#1A2332', lineHeight: 1.65 }}>
-                Ready to build an AI system that works while you sleep?
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <a href="#contact" style={{ background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115', padding: '16px 32px', borderRadius: '50px', fontWeight: 700, fontSize: '15px', textDecoration: 'none', textAlign: 'center', boxShadow: '0 8px 28px rgba(212,175,55,0.4)', letterSpacing: '0.04em' }}>
-                  Book Free Strategy Call →
-                </a>
-                <a href="tel:2024253161" style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(212,175,55,0.4)', color: '#0F1115', padding: '16px 32px', borderRadius: '50px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', textAlign: 'center' }}>
-                  📞 Call 202.425.3161
-                </a>
-                <a href="mailto:michael.smith@aoaisolutions.dev" style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(212,175,55,0.4)', color: '#0F1115', padding: '16px 32px', borderRadius: '50px', fontWeight: 600, fontSize: '15px', textDecoration: 'none', textAlign: 'center' }}>
-                  ✉️ Send an Email
-                </a>
-              </div>
-            </div>
-
+          <h2 style={{ fontSize: 'clamp(26px, 4vw, 44px)', fontWeight: 800, color: '#0F1115', letterSpacing: '-0.02em', lineHeight: 1.12 }}>
+            Ready to Build{' '}
+            <em style={{ fontStyle: 'normal', background: 'linear-gradient(135deg, #B8941F, #E8C84A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Smarter</em>
+            {' '}Growth Systems?
+          </h2>
+          <p style={{ fontSize: '16px', color: '#1A2332', fontWeight: 300, lineHeight: 1.75, maxWidth: '520px' }}>
+            AOAI Solutions helps businesses move beyond disconnected tools and into scalable systems that create measurable, compounding growth.
+          </p>
+          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="#contact" style={{ background: 'linear-gradient(135deg, #D4AF37, #E8C84A)', color: '#0F1115', padding: '15px 32px', borderRadius: '50px', fontWeight: 700, fontSize: '15px', textDecoration: 'none', boxShadow: '0 8px 28px rgba(212,175,55,0.4)', letterSpacing: '0.04em' }}>
+              Schedule A Discovery Call →
+            </a>
+            <a href="tel:2024253161" style={{ background: 'rgba(255,255,255,0.75)', border: '1px solid rgba(212,175,55,0.4)', color: '#0F1115', padding: '15px 28px', borderRadius: '50px', fontWeight: 600, fontSize: '15px', textDecoration: 'none' }}>
+              📞 202.425.3161
+            </a>
           </div>
         </div>
       </section>
