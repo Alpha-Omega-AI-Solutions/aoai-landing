@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AOAI Solutions — Service &amp; Pricing Catalog 2026</title>
+<meta name="description" content="AOAI Solutions service and pricing catalog. AI systems, automation, full-stack development, and digital infrastructure for modern businesses." />
+<meta name="robots" content="noindex" />
+
+<link rel="icon" type="image/png" href="/logo-transparent.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   AOAI SOLUTIONS — SERVICE & PRICING CATALOG
+   Brand system: DM Sans · Gold #D4AF37 · Dark #0F1115
+═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:          #D4AF37;
+  --gold-light:    #E8C84A;
+  --gold-dark:     #B8941F;
+  --gold-dim:      rgba(212,175,55,0.18);
+  --gold-border:   rgba(212,175,55,0.25);
+  --bg:            #0F1115;
+  --bg-card:       rgba(255,255,255,0.035);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --bg-featured:   linear-gradient(145deg, #1a1710 0%, #131110 100%);
+  --text:          #ffffff;
+  --text-muted:    rgba(255,255,255,0.45);
+  --text-soft:     rgba(255,255,255,0.7);
+  --divider:       rgba(212,175,55,0.15);
+  --radius-card:   20px;
+  --radius-btn:    50px;
+  --font:          'DM Sans', 'Inter', sans-serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  overflow-x: hidden;
+}
+
+/* ── PRINT ─────────────────────────────────────────────── */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  body { margin: 0; background: #0F1115 !important; }
+  .catalog-section { page-break-after: always; }
+  .no-print { display: none !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+/* ── SHARED UTILITIES ───────────────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  width: 100%;
+}
+.gold-line-solid {
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+.gold-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  border-radius: 50px;
+}
+.badge-filled {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0F1115;
+  border-color: transparent;
+}
+
+/* ── LOGO ───────────────────────────────────────────────── */
+.catalog-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.catalog-logo-sm {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.65;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0F1115;
+  padding: 13px 30px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  box-shadow: 0 6px 24px rgba(212,175,55,0.35);
+  transition: opacity 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn-primary:hover { opacity: 0.9; box-shadow: 0 8px 32px rgba(212,175,55,0.5); }
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--gold);
+  padding: 12px 28px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--gold-border);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background 0.2s, border-color 0.2s;
+}
+.btn-outline:hover { background: var(--gold-dim); border-color: var(--gold); }
+
+.btn-ghost {
+  display: inline-block;
+  background: rgba(255,255,255,0.07);
+  color: var(--text-soft);
+  padding: 12px 28px;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+/* ── CATALOG SECTIONS ───────────────────────────────────── */
+.catalog-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── SECTION HEADER (inner pages) ──────────────────────── */
+.section-head {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 48px 48px;
+  border-bottom: 1px solid var(--divider);
+}
+.section-head-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.section-head-label span { display: inline-block; width: 28px; height: 1px; background: var(--gold); opacity: 0.6; }
+.section-title {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* ── SECTION BODY ───────────────────────────────────────── */
+.section-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 48px 72px;
+}
+
+/* ── SECTION FOOTER ─────────────────────────────────────── */
+.section-foot {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--divider);
+}
+.section-foot-page {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/* ── CARDS ──────────────────────────────────────────────── */
+.cards-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.cards-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-card);
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+.card:hover {
+  border-color: var(--gold-border);
+  background: var(--bg-card-hover);
+  transform: translateY(-3px);
+}
+.card-featured {
+  background: var(--bg-featured);
+  border-color: var(--gold-border);
+}
+.card-featured:hover { border-color: var(--gold); }
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.card-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+.card-price-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 3px;
+}
+.card-best-for {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+.card-divider { height: 1px; background: rgba(255,255,255,0.06); }
+
+.card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.45;
+  font-weight: 300;
+}
+.card-spacer { flex: 1; }
+
+.card-top-badge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0F1115;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  padding: 3px 14px;
+  border-radius: 0 0 10px 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.credit-note {
+  font-size: 12px;
+  color: var(--gold);
+  font-style: italic;
+  padding: 10px 14px;
+  border: 1px dashed rgba(212,175,55,0.3);
+  border-radius: 10px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PAGE 1 — COVER
+───────────────────────────────────────────────────────── */
+#p1 {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 55%, rgba(212,175,55,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 25%, rgba(122,156,255,0.05) 0%, transparent 45%),
+    linear-gradient(160deg, #0F1115 0%, #131218 50%, #0F1115 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#p1 .cover-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+#p1 .cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0 0;
+}
+#p1 .cover-top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+#p1 .cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 0 48px;
+  max-width: 680px;
+  gap: 28px;
+}
+#p1 .cover-headline {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+#p1 .cover-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#p1 .cover-tagline {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+#p1 .cover-statement {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.75;
+  font-weight: 300;
+  border-left: 2px solid rgba(212,175,55,0.5);
+  padding-left: 18px;
+}
+#p1 .cover-ctas {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#p1 .cover-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+#p1 .cover-bottom {
+  padding: 28px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--divider);
+}
+#p1 .cover-contact {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+#p1 .cover-contact a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+#p1 .cover-contact a:hover { color: var(--gold); }
+#p1 .cover-contact a.gold { color: var(--gold); }
+/* Decorative circles */
+#p1 .deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.06);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PAGE 2 — HOW AOAI WORKS
+───────────────────────────────────────────────────────── */
+#p2 {
+  background: linear-gradient(180deg, #0F1115 0%, #111318 100%);
+  border-top: 1px solid var(--divider);
+}
+#p2 .stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 36px;
+}
+#p2 .stage {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-card);
+  padding: 30px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: border-color 0.25s, transform 0.25s;
+}
+#p2 .stage:hover { border-color: var(--gold-border); transform: translateY(-4px); }
+#p2 .stage-featured {
+  border-color: rgba(212,175,55,0.3);
+  background: var(--bg-featured);
+}
+#p2 .stage-num {
+  font-size: 52px;
+  font-weight: 800;
+  color: rgba(212,175,55,0.08);
+  line-height: 1;
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  letter-spacing: -0.04em;
+}
+#p2 .stage-icon { font-size: 26px; line-height: 1; }
+#p2 .stage-sub {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+#p2 .stage-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 2px;
+}
+#p2 .stage-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+#p2 .flow-arrow {
+  display: none; /* shown only on large screens via media query */
+}
+
+/* ─────────────────────────────────────────────────────────
+   PAGE 6 — PATHWAYS
+───────────────────────────────────────────────────────── */
+#p6 {
+  background: linear-gradient(160deg, #0F1115 0%, #111318 100%);
+  border-top: 1px solid var(--divider);
+}
+.pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.pathway {
+  padding: 32px 26px;
+  border-right: 1px solid var(--divider);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: background 0.2s;
+}
+.pathway:last-child { border-right: none; }
+.pathway:hover { background: var(--bg-card-hover); }
+.pathway-featured {
+  background: var(--bg-featured);
+  border-left: 2px solid var(--gold);
+}
+.pathway-tier {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.pathway-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.pathway-price {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+.pathway-price-monthly {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-top: 4px;
+}
+.pathway-price-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-weight: 400;
+}
+.pathway-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.pathway-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.45;
+  font-weight: 300;
+}
+.pathway-list .highlight-item {
+  color: var(--gold);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PAGE 7 — PARTNERSHIP
+───────────────────────────────────────────────────────── */
+#p7 {
+  background: #0F1115;
+  border-top: 1px solid var(--divider);
+}
+.retainer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+}
+.retainer-desc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.retainer-quote {
+  padding: 18px 22px;
+  background: rgba(212,175,55,0.05);
+  border: 1px solid var(--gold-border);
+  border-radius: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-style: italic;
+  margin-top: 24px;
+}
+.tier-rows { display: flex; flex-direction: column; gap: 14px; }
+.tier-row {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: border-color 0.2s;
+}
+.tier-row:hover { border-color: var(--gold-border); }
+.tier-row-featured {
+  border-color: var(--gold-border);
+  background: var(--bg-featured);
+}
+.tier-name { font-weight: 700; font-size: 15px; color: var(--text); }
+.tier-desc { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.tier-tags { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; padding: 0 16px; }
+.tier-tag {
+  padding: 2px 9px;
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.18);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.tier-price-wrap { text-align: right; }
+.tier-price { font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1; }
+.tier-price-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.tier-cta-row {
+  margin-top: 4px;
+  padding: 18px 24px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.tier-cta-text { font-size: 14px; font-weight: 700; color: var(--text); }
+.tier-cta-sub { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+/* ─────────────────────────────────────────────────────────
+   PAGE 8 — FINAL CTA
+───────────────────────────────────────────────────────── */
+#p8 {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(212,175,55,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 30%, rgba(122,156,255,0.04) 0%, transparent 45%),
+    #0F1115;
+  border-top: 1px solid var(--divider);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+#p8 .cta-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+#p8 .cta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px 0 0;
+}
+#p8 .cta-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 28px;
+  padding: 72px 80px;
+}
+#p8 .cta-headline {
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+#p8 .cta-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+#p8 .cta-copy {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+#p8 .cta-btns {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#p8 .cta-contact-row {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#p8 .cta-contact-row a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+#p8 .cta-contact-row a:hover { text-decoration: underline; }
+#p8 .cta-bottom {
+  padding: 0 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--divider);
+  padding-top: 24px;
+}
+#p8 .cta-tagline {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+#p8 .cta-copyright {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+#p8 .cta-badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* ── PRINT BUTTON ───────────────────────────────────────── */
+.print-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+}
+.print-fab button {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0F1115;
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 13px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(212,175,55,0.4);
+  letter-spacing: 0.06em;
+  transition: opacity 0.2s;
+}
+.print-fab button:hover { opacity: 0.9; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  #p2 .stages { grid-template-columns: repeat(2, 1fr); }
+  .pathways-grid { grid-template-columns: repeat(2, 1fr); }
+  .pathway { border-right: none; border-bottom: 1px solid var(--divider); }
+  .pathway:nth-child(2n) { border-right: none; }
+  .pathway:nth-last-child(-n+2) { border-bottom: none; }
+  .retainer-layout { grid-template-columns: 1fr; }
+  .cards-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .section-head, .section-body, .section-foot,
+  #p1 .cover-inner, #p8 .cta-inner { padding-left: 22px; padding-right: 22px; }
+  #p2 .stages { grid-template-columns: 1fr; }
+  .pathways-grid { grid-template-columns: 1fr; }
+  .pathway { border-bottom: 1px solid var(--divider); border-right: none; }
+  .pathway:last-child { border-bottom: none; }
+  .cards-grid-3, .cards-grid-2 { grid-template-columns: 1fr; }
+  #p1 .cover-ctas { flex-direction: column; align-items: flex-start; }
+  #p8 .cta-body { padding: 48px 0; }
+  .tier-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .tier-tags { padding: 0; }
+  .tier-price-wrap { align-self: flex-start; }
+  #p1 .cover-contact { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p1">
+  <!-- Decorative rings -->
+  <div class="deco-ring" style="width:700px;height:700px;right:-200px;top:50%;transform:translateY(-50%)"></div>
+  <div class="deco-ring" style="width:480px;height:480px;right:-80px;top:50%;transform:translateY(-50%);border-color:rgba(212,175,55,0.04)"></div>
+  <div class="deco-ring" style="width:260px;height:260px;right:80px;top:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(212,175,55,0.04) 0%,transparent 65%);border:none"></div>
+
+  <div class="cover-inner">
+    <div class="cover-top">
+      <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo" />
+      <div class="cover-top-right">
+        <span class="section-label">Service &amp; Pricing Catalog</span>
+        <div class="gold-line-solid" style="width:36px;flex-shrink:0;"></div>
+        <span class="section-label" style="font-size:10px;color:rgba(212,175,55,0.55);">2026</span>
+      </div>
+    </div>
+
+    <div class="cover-body">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="gold-line-solid" style="width:36px;flex-shrink:0;"></div>
+        <span class="section-label">Growth · Automation · Digital Transformation</span>
+      </div>
+
+      <h1 class="cover-headline">
+        Building Systems<br/>That <em>Create</em><br/>Measurable Growth
+      </h1>
+
+      <p class="cover-tagline">AOAI Solutions &nbsp;·&nbsp; Washington DC Metro &nbsp;·&nbsp; 2026</p>
+
+      <blockquote class="cover-statement">
+        We do not just build websites.<br/>
+        We build systems that attract, convert,<br/>retain, and re-engage clients.
+      </blockquote>
+
+      <div class="cover-ctas">
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary">Schedule a Discovery Call →</a>
+        <a href="#p3" class="btn-ghost">View Service Packages</a>
+      </div>
+
+      <div class="cover-badges">
+        <span class="badge">Med Spas</span>
+        <span class="badge">Salons</span>
+        <span class="badge">Contractors</span>
+        <span class="badge">Restaurants</span>
+        <span class="badge">Law Firms</span>
+        <span class="badge">Startups</span>
+        <span class="badge">Professional Services</span>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-contact">
+        <a href="https://www.aoaisolutions.dev" class="gold">aoaisolutions.dev</a>
+        <a href="mailto:michael.smith@aoaisolutions.dev">michael.smith@aoaisolutions.dev</a>
+        <a href="tel:2024253161">202.425.3161</a>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);text-align:right;line-height:1.6;">
+        Confidential · Client Use Only<br/>© 2026 AOAI Solutions
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — HOW AOAI WORKS
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p2">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Our Methodology</span>
+    </div>
+    <h2 class="section-title">From Digital Presence<br/>to Scalable Growth</h2>
+    <p class="section-sub">AOAI Solutions guides businesses through four compounding stages — each one building on the last to create a lasting digital advantage.</p>
+  </div>
+
+  <div class="section-body">
+    <div class="stages">
+
+      <div class="stage">
+        <div class="stage-num">01</div>
+        <div class="stage-icon">🏛️</div>
+        <div>
+          <div class="stage-sub">Stage One</div>
+          <div class="stage-name">Foundation</div>
+        </div>
+        <div class="gold-line-solid"></div>
+        <p class="stage-desc">Digital audit, online visibility, website performance, and lead capture infrastructure. Build a presence worth finding.</p>
+        <ul class="card-list" style="margin-top:4px;">
+          <li><div class="gold-dot"></div>Website &amp; SEO Audit</li>
+          <li><div class="gold-dot"></div>Google Business Profile</li>
+          <li><div class="gold-dot"></div>Lead Capture Setup</li>
+          <li><div class="gold-dot"></div>Analytics Foundation</li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <div class="stage-num">02</div>
+        <div class="stage-icon">📈</div>
+        <div>
+          <div class="stage-sub">Stage Two</div>
+          <div class="stage-name">Growth</div>
+        </div>
+        <div class="gold-line-solid"></div>
+        <p class="stage-desc">Local SEO, conversion optimization, and customer journey redesign. Turn visibility into consistent, qualified leads.</p>
+        <ul class="card-list" style="margin-top:4px;">
+          <li><div class="gold-dot"></div>Local SEO Strategy</li>
+          <li><div class="gold-dot"></div>Conversion Optimization</li>
+          <li><div class="gold-dot"></div>Journey Redesign</li>
+          <li><div class="gold-dot"></div>Review Strategy</li>
+        </ul>
+      </div>
+
+      <div class="stage" style="border-color:rgba(212,175,55,0.22);">
+        <div class="stage-num">03</div>
+        <div class="stage-icon">🤖</div>
+        <div>
+          <div class="stage-sub">Stage Three</div>
+          <div class="stage-name">Automation &amp; AI</div>
+        </div>
+        <div class="gold-line-solid"></div>
+        <p class="stage-desc">Email, SMS, review automation, AI concierge, and intelligent lead qualification. Operate at scale without adding headcount.</p>
+        <ul class="card-list" style="margin-top:4px;">
+          <li><div class="gold-dot"></div>AI Chat &amp; Concierge</li>
+          <li><div class="gold-dot"></div>Email &amp; SMS Automation</li>
+          <li><div class="gold-dot"></div>Review Campaigns</li>
+          <li><div class="gold-dot"></div>Lead Qualification</li>
+        </ul>
+      </div>
+
+      <div class="stage stage-featured">
+        <div class="stage-num">04</div>
+        <div class="stage-icon">🚀</div>
+        <div>
+          <div class="stage-sub">Stage Four</div>
+          <div class="stage-name">Scale &amp; Partnership</div>
+        </div>
+        <div class="gold-line-solid"></div>
+        <p class="stage-desc">Custom systems, advanced analytics, strategic growth planning, and AOAI as your ongoing technology partner.</p>
+        <ul class="card-list" style="margin-top:4px;">
+          <li><div class="gold-dot"></div>Custom Development</li>
+          <li><div class="gold-dot"></div>Growth Dashboards</li>
+          <li><div class="gold-dot"></div>Monthly Optimization</li>
+          <li><div class="gold-dot"></div>Strategic Partnership</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">2 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — FOUNDATION SERVICES
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p3" style="background:linear-gradient(180deg,#111318 0%,#0F1115 100%);border-top:1px solid var(--divider);">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Stage One</span>
+    </div>
+    <h2 class="section-title">Foundation Services</h2>
+    <p class="section-sub">Every AOAI engagement begins with understanding your business before recommending a solution. Start with clarity.</p>
+  </div>
+
+  <div class="section-body">
+    <div class="cards-grid-3">
+
+      <!-- FREE CALL -->
+      <div class="card" style="border-color:rgba(212,175,55,0.3);">
+        <div class="card-top-badge">No Cost</div>
+        <div class="card-icon">💬</div>
+        <div class="card-name">Complimentary Discovery Call</div>
+        <div>
+          <div class="card-price">FREE</div>
+          <div class="card-price-sub">15–30 minute consultation</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses exploring whether AOAI is the right fit</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Business overview discussion</li>
+          <li><div class="gold-dot"></div>Pain point discovery</li>
+          <li><div class="gold-dot"></div>Goal alignment session</li>
+          <li><div class="gold-dot"></div>Scope assessment</li>
+          <li><div class="gold-dot"></div>Initial recommendations</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="text-align:center;">Schedule Your Call →</a>
+      </div>
+
+      <!-- ASSESSMENT -->
+      <div class="card card-featured">
+        <div class="card-icon">🔍</div>
+        <div class="card-name">Digital Presence Assessment</div>
+        <div>
+          <div class="card-price">$750</div>
+          <div class="card-price-sub">One-time engagement</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses needing a clear growth roadmap before investing further</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Website &amp; SEO audit</li>
+          <li><div class="gold-dot"></div>Google Business Profile review</li>
+          <li><div class="gold-dot"></div>Social media &amp; competitor analysis</li>
+          <li><div class="gold-dot"></div>Conversion &amp; lead capture analysis</li>
+          <li><div class="gold-dot"></div>Client journey analysis</li>
+          <li><div class="gold-dot"></div>Written strategy report + roadmap</li>
+          <li><div class="gold-dot"></div>Follow-up strategy session</li>
+        </ul>
+        <div class="credit-note">★ Assessment fee may be credited toward a larger implementation project.</div>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Request Assessment →</a>
+      </div>
+
+      <!-- LEAD CAPTURE -->
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-name">Lead Capture Optimization</div>
+        <div>
+          <div class="card-price">$2,500<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses generating traffic but struggling to convert leads</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Website conversion review</li>
+          <li><div class="gold-dot"></div>CTA &amp; inquiry form optimization</li>
+          <li><div class="gold-dot"></div>Booking flow improvements</li>
+          <li><div class="gold-dot"></div>Google Analytics &amp; Search Console</li>
+          <li><div class="gold-dot"></div>Pixel &amp; lead tracking setup</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Optimize Leads →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">3 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — GROWTH PACKAGES
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p4" style="background:#0F1115;border-top:1px solid var(--divider);">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Stage Two</span>
+    </div>
+    <h2 class="section-title">Growth Packages</h2>
+    <p class="section-sub">Designed to turn your existing digital presence into a predictable lead generation machine.</p>
+  </div>
+
+  <div class="section-body">
+    <div class="cards-grid-3">
+
+      <!-- LOCAL SEO -->
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <div class="card-name">Local SEO Package</div>
+        <div>
+          <div class="card-price">$3,000<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Local service businesses seeking search visibility</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Google Business Profile optimization</li>
+          <li><div class="gold-dot"></div>Review strategy &amp; citation cleanup</li>
+          <li><div class="gold-dot"></div>Keyword research &amp; mapping</li>
+          <li><div class="gold-dot"></div>On-page SEO implementation</li>
+          <li><div class="gold-dot"></div>Service page optimization</li>
+          <li><div class="gold-dot"></div>Local search enhancements</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+      <!-- WEBSITE ENHANCEMENT -->
+      <div class="card card-featured">
+        <div class="card-top-badge">High Impact</div>
+        <div class="card-icon">💻</div>
+        <div class="card-name">Website Enhancement Package</div>
+        <div>
+          <div class="card-price">$4,500<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses needing a stronger site without a full rebuild</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>New pages &amp; updated design</li>
+          <li><div class="gold-dot"></div>UX &amp; conversion optimization</li>
+          <li><div class="gold-dot"></div>Customer journey redesign</li>
+          <li><div class="gold-dot"></div>Mobile-first optimization</li>
+          <li><div class="gold-dot"></div>Performance improvements</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+      <!-- CLIENT EXPERIENCE AUTOMATION -->
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-name">Client Experience Automation</div>
+        <div>
+          <div class="card-price">$3,500<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses wanting stronger retention &amp; repeat business</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Appointment reminder sequences</li>
+          <li><div class="gold-dot"></div>Automated review requests</li>
+          <li><div class="gold-dot"></div>Rebooking &amp; win-back campaigns</li>
+          <li><div class="gold-dot"></div>Email automation flows</li>
+          <li><div class="gold-dot"></div>SMS automation sequences</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">4 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 5 — AI & SCALE PACKAGES
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p5" style="background:linear-gradient(180deg,#111318 0%,#0F1115 100%);border-top:1px solid var(--divider);">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Stages Three &amp; Four</span>
+    </div>
+    <h2 class="section-title">AI &amp; Scale Packages</h2>
+    <p class="section-sub">For businesses ready to leverage AI, rebuild from the ground up, or undergo complete digital transformation.</p>
+  </div>
+
+  <div class="section-body">
+    <div class="cards-grid-3">
+
+      <!-- AI CONCIERGE -->
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <div class="card-name">AI Concierge Package</div>
+        <div>
+          <div class="card-price">$5,000<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses wanting faster lead response and AI-powered engagement</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>AI chat assistant integration</li>
+          <li><div class="gold-dot"></div>FAQ automation &amp; routing</li>
+          <li><div class="gold-dot"></div>Intelligent lead qualification</li>
+          <li><div class="gold-dot"></div>Service recommendation engine</li>
+          <li><div class="gold-dot"></div>Appointment routing &amp; booking</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+      <!-- WEBSITE REBUILD -->
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-name">Full Website Rebuild</div>
+        <div>
+          <div class="card-price">$10,000<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Starting price</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses ready to move beyond platform limitations</p>
+        <div class="card-divider"></div>
+        <ul class="card-list">
+          <li><div class="gold-dot"></div>Custom design &amp; mobile-first dev</li>
+          <li><div class="gold-dot"></div>SEO migration &amp; performance tuning</li>
+          <li><div class="gold-dot"></div>Modern tech stack &amp; integrations</li>
+          <li><div class="gold-dot"></div>Advanced analytics setup</li>
+          <li><div class="gold-dot"></div>Content management system</li>
+        </ul>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+      <!-- FLAGSHIP -->
+      <div class="card card-featured">
+        <div class="card-top-badge">Flagship Solution</div>
+        <div class="card-icon">👑</div>
+        <div class="card-name">AOAI Digital Ecosystem Package</div>
+        <div>
+          <div class="card-price">$18,500<span style="font-size:16px;font-weight:400;color:var(--text-muted);">+</span></div>
+          <div class="card-price-sub">Complete digital transformation</div>
+        </div>
+        <p class="card-best-for">Best for: Businesses seeking end-to-end digital transformation</p>
+        <div class="card-divider"></div>
+        <!-- 5-column flagship grid -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+          <div>
+            <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Foundation</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Website strategy</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>SEO strategy</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Analytics</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Marketing</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Lead funnels</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Conversion opt.</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Social strategy</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Automation</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Email flows</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>SMS sequences</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Review systems</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">AI</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>AI concierge</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Lead qualify</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Reporting</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Dashboards</div>
+              <div style="display:flex;align-items:flex-start;gap:5px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.35;"><div class="gold-dot" style="margin-top:3px;"></div>Monthly analytics</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-spacer"></div>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="text-align:center;">Request Proposal →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">5 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 6 — MOST POPULAR PATHWAYS
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p6">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Pre-Built Investment Pathways</span>
+    </div>
+    <h2 class="section-title">Most Popular Client Pathways</h2>
+    <p class="section-sub">Not sure where to start? These curated pathways match the most common business goals we see across every industry we serve.</p>
+  </div>
+
+  <div class="section-body" style="padding-top:24px;">
+    <div class="pathways-grid">
+
+      <!-- BRONZE -->
+      <div class="pathway">
+        <div>
+          <div class="pathway-tier">Bronze Pathway</div>
+          <div class="pathway-name">Visibility<br/>Package</div>
+        </div>
+        <div>
+          <div class="pathway-price">$2,500</div>
+          <div class="pathway-price-sub">One-time investment</div>
+        </div>
+        <ul class="pathway-list">
+          <li><div class="gold-dot"></div>Local SEO foundation</li>
+          <li><div class="gold-dot"></div>Website optimization</li>
+          <li><div class="gold-dot"></div>Lead capture improvements</li>
+          <li><div class="gold-dot"></div>Google Business Profile optimization</li>
+        </ul>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Get Started →</a>
+      </div>
+
+      <!-- SILVER -->
+      <div class="pathway pathway-featured">
+        <div>
+          <div class="pathway-tier">Silver Pathway</div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <div class="pathway-name">Growth<br/>Package</div>
+            <span class="badge badge-filled" style="font-size:9px;align-self:flex-start;margin-top:4px;">Most Popular</span>
+          </div>
+        </div>
+        <div>
+          <div class="pathway-price">$5,000</div>
+          <div class="pathway-price-sub">One-time investment</div>
+        </div>
+        <ul class="pathway-list">
+          <li><div class="gold-dot"></div><span class="highlight-item">Everything in Bronze</span></li>
+          <li><div class="gold-dot"></div>Email automation setup</li>
+          <li><div class="gold-dot"></div>Review campaign launch</li>
+          <li><div class="gold-dot"></div>Analytics &amp; reporting setup</li>
+          <li><div class="gold-dot"></div>Conversion improvements</li>
+        </ul>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="text-align:center;">Get Started →</a>
+      </div>
+
+      <!-- GOLD -->
+      <div class="pathway">
+        <div>
+          <div class="pathway-tier">Gold Pathway</div>
+          <div class="pathway-name">Digital Growth<br/>Package</div>
+        </div>
+        <div>
+          <div class="pathway-price">$10,000</div>
+          <div class="pathway-price-sub">One-time investment</div>
+        </div>
+        <ul class="pathway-list">
+          <li><div class="gold-dot"></div><span class="highlight-item">Everything in Silver</span></li>
+          <li><div class="gold-dot"></div>AI chat assistant</li>
+          <li><div class="gold-dot"></div>Customer journey redesign</li>
+          <li><div class="gold-dot"></div>Advanced automation</li>
+          <li><div class="gold-dot"></div>Strategic implementation</li>
+        </ul>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-outline" style="text-align:center;">Get Started →</a>
+      </div>
+
+      <!-- PLATINUM -->
+      <div class="pathway" style="background:linear-gradient(145deg,#1c1a12,#131110);border-left:2px solid var(--gold);">
+        <div>
+          <div class="pathway-tier">Platinum Pathway</div>
+          <div style="display:flex;align-items:flex-start;gap:8px;flex-direction:column;">
+            <div class="pathway-name">AOAI Growth<br/>Partner</div>
+            <span class="badge" style="font-size:9px;">Best for Scaling</span>
+          </div>
+        </div>
+        <div>
+          <div class="pathway-price">$10,000</div>
+          <div class="pathway-price-sub">Setup fee</div>
+          <div class="pathway-price-monthly">+ $1,000<span style="font-size:13px;color:var(--text-muted);font-weight:400;">/month</span></div>
+        </div>
+        <ul class="pathway-list">
+          <li><div class="gold-dot"></div><span class="highlight-item">Everything in Gold</span></li>
+          <li><div class="gold-dot"></div>Ongoing consulting</li>
+          <li><div class="gold-dot"></div>Monthly optimization</li>
+          <li><div class="gold-dot"></div>Content &amp; growth planning</li>
+          <li><div class="gold-dot"></div>Dedicated reporting</li>
+        </ul>
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="text-align:center;">Become a Partner →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">6 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 7 — PARTNERSHIP PROGRAMS
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p7">
+  <div class="section-head">
+    <div class="section-head-label">
+      <span></span>
+      <span class="section-label">Ongoing Partnership</span>
+    </div>
+    <h2 class="section-title">Partnership Programs</h2>
+    <p class="section-sub">For businesses that want AOAI Solutions as a continuous technology and growth partner — not just a one-time vendor.</p>
+  </div>
+
+  <div class="section-body">
+    <div class="retainer-layout">
+
+      <div>
+        <p class="retainer-desc">
+          The AOAI Growth Partner Retainer is designed for businesses that recognize digital growth as an ongoing investment, not a one-time expense.
+          <br/><br/>
+          Each month, we monitor your systems, optimize your campaigns, refresh your strategy, and ensure your digital infrastructure continues to perform and evolve.
+        </p>
+
+        <div style="margin-bottom:14px;">
+          <div class="section-label" style="margin-bottom:12px;">Every Retainer Includes</div>
+          <ul class="card-list" style="gap:10px;">
+            <li><div class="gold-dot"></div>Monthly consulting &amp; strategy sessions</li>
+            <li><div class="gold-dot"></div>Website updates &amp; content refreshes</li>
+            <li><div class="gold-dot"></div>Automation monitoring &amp; enhancements</li>
+            <li><div class="gold-dot"></div>Performance reporting &amp; dashboards</li>
+            <li><div class="gold-dot"></div>Growth planning &amp; roadmap updates</li>
+            <li><div class="gold-dot"></div>Priority support &amp; response</li>
+          </ul>
+        </div>
+
+        <div class="retainer-quote">
+          "Businesses that maintain an active digital growth partner consistently outperform those that treat their digital presence as a set-it-and-forget-it investment."
+        </div>
+      </div>
+
+      <div>
+        <div class="tier-rows">
+
+          <div class="tier-row">
+            <div>
+              <div class="tier-name">Starter Support</div>
+              <div class="tier-desc">Maintenance &amp; monitoring</div>
+            </div>
+            <div class="tier-tags">
+              <span class="tier-tag">Monthly Updates</span>
+              <span class="tier-tag">Reporting</span>
+              <span class="tier-tag">Support</span>
+            </div>
+            <div class="tier-price-wrap">
+              <div class="tier-price">$500</div>
+              <div class="tier-price-sub">/month</div>
+            </div>
+          </div>
+
+          <div class="tier-row tier-row-featured">
+            <div>
+              <div class="tier-name">Growth Support</div>
+              <div class="tier-desc" style="color:var(--gold);">Most selected tier</div>
+            </div>
+            <div class="tier-tags">
+              <span class="tier-tag">Starter +</span>
+              <span class="tier-tag">Automation</span>
+              <span class="tier-tag">SEO</span>
+              <span class="tier-tag">Conversion Opt.</span>
+            </div>
+            <div class="tier-price-wrap">
+              <div class="tier-price">$1,000</div>
+              <div class="tier-price-sub">/month</div>
+            </div>
+          </div>
+
+          <div class="tier-row">
+            <div>
+              <div class="tier-name">Strategic Partner</div>
+              <div class="tier-desc">Full-service growth partner</div>
+            </div>
+            <div class="tier-tags">
+              <span class="tier-tag">Growth +</span>
+              <span class="tier-tag">AI Systems</span>
+              <span class="tier-tag">Custom Dev</span>
+              <span class="tier-tag">Strategy</span>
+            </div>
+            <div class="tier-price-wrap">
+              <div class="tier-price">$1,500</div>
+              <div class="tier-price-sub">/month</div>
+            </div>
+          </div>
+
+          <div class="tier-cta-row">
+            <div>
+              <div class="tier-cta-text">Ready to become a Growth Partner?</div>
+              <div class="tier-cta-sub">Start with a complimentary strategy call to find the right tier.</div>
+            </div>
+            <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary">Schedule a Call →</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo-sm" />
+    <span class="section-foot-page">7 / 8</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 8 — FINAL CTA
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p8">
+  <div class="cta-inner">
+    <div class="cta-top">
+      <img src="/logo-white.png" alt="AOAI Solutions" class="catalog-logo" />
+      <div class="gold-line-solid" style="width:180px;flex-shrink:0;opacity:0.35;"></div>
+    </div>
+
+    <div class="cta-body">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="gold-line-solid" style="width:36px;flex-shrink:0;"></div>
+        <span class="section-label">Start Your Growth Journey</span>
+        <div class="gold-line-solid" style="width:36px;flex-shrink:0;"></div>
+      </div>
+
+      <h2 class="cta-headline">
+        Ready To Build<br/><em>Smarter</em> Growth Systems?
+      </h2>
+
+      <p class="cta-copy">
+        AOAI Solutions helps businesses move beyond disconnected tools and into scalable systems that create measurable, compounding growth.<br/><br/>
+        We do not just build websites. We build digital ecosystems.
+      </p>
+
+      <div class="cta-btns">
+        <a href="https://www.aoaisolutions.dev/#contact" class="btn-primary" style="font-size:14px;padding:16px 36px;">Schedule A Complimentary Discovery Call →</a>
+        <a href="tel:2024253161" class="btn-ghost">📞 202.425.3161</a>
+      </div>
+
+      <div class="cta-contact-row">
+        <a href="https://www.aoaisolutions.dev">aoaisolutions.dev</a>
+        <span style="color:rgba(255,255,255,0.2);">·</span>
+        <a href="mailto:michael.smith@aoaisolutions.dev">michael.smith@aoaisolutions.dev</a>
+        <span style="color:rgba(255,255,255,0.2);">·</span>
+        <a href="tel:2024253161">202.425.3161</a>
+      </div>
+    </div>
+
+    <div class="cta-bottom">
+      <div>
+        <div class="cta-tagline">Growth · Automation · Digital Transformation</div>
+        <div class="cta-copyright">© 2026 AOAI Solutions. All rights reserved.</div>
+      </div>
+      <div class="cta-badge-row">
+        <span class="badge" style="font-size:9px;">Med Spas</span>
+        <span class="badge" style="font-size:9px;">Salons</span>
+        <span class="badge" style="font-size:9px;">Contractors</span>
+        <span class="badge" style="font-size:9px;">Restaurants</span>
+        <span class="badge" style="font-size:9px;">Law Firms</span>
+        <span class="badge" style="font-size:9px;">Startups</span>
+        <span class="badge" style="font-size:9px;">Wellness</span>
+        <span class="badge" style="font-size:9px;">Professional Services</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Print / Export PDF Button (screen only) -->
+<div class="print-fab no-print">
+  <button onclick="window.print()">Export PDF ↓</button>
+</div>
+
+</body>
+</html>
