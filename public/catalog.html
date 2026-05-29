@@ -46,7 +46,7 @@
   --radius-btn:    50px;
 }
 
-html { font-size: 16px; scroll-behavior: smooth; }
+html { font-size: 16px; scroll-behavior: smooth; scroll-padding-top: 70px; }
 
 body {
   background: #fff;
@@ -189,12 +189,12 @@ body {
   flex-direction: column;
   gap: 14px;
   position: relative;
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(122,156,255,0.18);
-  border-color: var(--gold-dim);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 56px rgba(122,156,255,0.2), 0 0 32px rgba(212,175,55,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  border-color: rgba(212,175,55,0.38);
 }
 .card-featured {
   border-color: var(--gold-border);
@@ -362,11 +362,11 @@ body {
   min-height: 96vh;
   background:
     linear-gradient(108deg,
-      rgba(201,217,255,0.97) 0%,
-      rgba(185,207,255,0.94) 28%,
-      rgba(152,183,255,0.80) 52%,
-      rgba(122,156,255,0.28) 72%,
-      rgba(122,156,255,0.00) 100%),
+      rgba(201,217,255,0.98) 0%,
+      rgba(185,207,255,0.97) 28%,
+      rgba(152,183,255,0.93) 52%,
+      rgba(122,156,255,0.82) 72%,
+      rgba(185,207,255,0.72) 100%),
     url('/hero-launch.jpg') center top / cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -493,7 +493,7 @@ body {
   position: relative;
   transition: all 0.25s ease;
 }
-#p2 .stage:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(122,156,255,0.18); border-color: var(--gold-dim); }
+#p2 .stage:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(122,156,255,0.2), 0 0 28px rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.38); transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 #p2 .stage-featured {
   border-color: var(--gold-border);
   background: linear-gradient(145deg, #FFFDF4, #fff);
@@ -568,9 +568,18 @@ body {
 .pathway:hover { background: #FAFBFF; }
 .pathway-featured {
   background: linear-gradient(145deg, #FFFDF4, #FFF9E8);
-  border-left: 3px solid var(--gold);
+  border-left: 4px solid var(--gold);
+  padding: 36px 30px;
+  box-shadow: 0 12px 40px rgba(212,175,55,0.14), inset 0 1px 0 rgba(255,255,255,0.8);
+  position: relative;
+  z-index: 2;
+  transform: scale(1.02);
 }
-.pathway-featured:hover { background: linear-gradient(145deg, #FFFCF0, #FFF8E0); }
+.pathway-featured:hover {
+  background: linear-gradient(145deg, #FFFCF0, #FFF6D8);
+  box-shadow: 0 20px 60px rgba(212,175,55,0.22), inset 0 1px 0 rgba(255,255,255,0.8);
+  transform: scale(1.02) translateY(-2px);
+}
 .pathway-tier {
   font-size: 10px;
   letter-spacing: 0.26em;
@@ -854,6 +863,152 @@ body {
   font-weight: 300;
 }
 
+/* ════════════════════════════════════════════════════════
+   STICKY NAVIGATION
+════════════════════════════════════════════════════════ */
+#catalog-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(122,156,255,0.14);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  transition: box-shadow 0.3s;
+}
+#catalog-nav.scrolled { box-shadow: 0 4px 24px rgba(15,17,21,0.08); }
+.nav-brand {
+  font-size: 14px; font-weight: 800; color: var(--ink);
+  letter-spacing: -0.01em; text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.nav-brand-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  flex-shrink: 0;
+}
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 500; color: var(--ink-muted);
+  text-decoration: none; padding: 6px 11px; border-radius: 8px;
+  transition: color 0.2s, background 0.2s; white-space: nowrap;
+}
+.nav-links a:hover { color: var(--ink); background: rgba(122,156,255,0.08); }
+.nav-links .nav-cta {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
+  color: var(--ink) !important; font-weight: 700 !important;
+  border-radius: 50px !important; padding: 7px 16px !important;
+  box-shadow: 0 4px 14px rgba(212,175,55,0.28);
+  margin-left: 6px;
+}
+.nav-links .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--gold-dark), var(--gold)) !important; }
+@media (max-width: 940px) {
+  #catalog-nav .nav-links li { display: none; }
+  #catalog-nav .nav-links li:last-child { display: list-item; }
+}
+@media (max-width: 600px) { #catalog-nav { padding: 0 18px; } }
+@media print { #catalog-nav { display: none !important; } }
+
+/* ════════════════════════════════════════════════════════
+   INDUSTRIES WE SERVE
+════════════════════════════════════════════════════════ */
+#p-industries { background: #fff; border-top: 1px solid rgba(122,156,255,0.1); }
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+.industry-pill {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px; padding: 22px 12px;
+  background: #fff; border: 1px solid rgba(122,156,255,0.16);
+  border-radius: 16px; text-align: center;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.industry-pill:hover {
+  background: linear-gradient(145deg, #FFFDF4, #FFF9E8);
+  border-color: var(--gold-border); transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(212,175,55,0.14);
+}
+.industry-pill-icon { font-size: 28px; line-height: 1; }
+.industry-pill-name { font-size: 11px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.01em; line-height: 1.3; }
+@media (max-width: 1100px) { .industries-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 760px) { .industries-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ════════════════════════════════════════════════════════
+   WHAT SUCCESS LOOKS LIKE
+════════════════════════════════════════════════════════ */
+#p-success { background: var(--section-alt); border-top: 1px solid rgba(122,156,255,0.1); }
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.outcome-card {
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: var(--radius-card); padding: 30px 26px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.outcome-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 56px rgba(122,156,255,0.18), 0 0 28px rgba(212,175,55,0.1);
+  border-color: rgba(212,175,55,0.35);
+}
+.outcome-metric { font-size: 46px; font-weight: 800; color: var(--gold-dark); line-height: 1; letter-spacing: -0.03em; }
+.outcome-divider { height: 2px; width: 32px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 4px; }
+.outcome-label { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.outcome-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.65; font-weight: 300; flex: 1; }
+.outcome-source { font-size: 10px; color: var(--gold-dark); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.outcomes-disclaimer { font-size: 11px; color: var(--ink-faint); text-align: center; font-style: italic; padding-top: 14px; border-top: 1px solid rgba(122,156,255,0.12); }
+@media (max-width: 760px) { .outcomes-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════════════════
+   CASE STUDIES
+════════════════════════════════════════════════════════ */
+#p-cases { background: #fff; border-top: 1px solid rgba(122,156,255,0.1); }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.case-card {
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: var(--radius-card); padding: 32px 26px;
+  display: flex; flex-direction: column; gap: 14px;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative; overflow: hidden;
+}
+.case-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.case-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(122,156,255,0.2), 0 0 28px rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.38); }
+.case-industry-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; background: rgba(122,156,255,0.08);
+  border: 1px solid rgba(122,156,255,0.2); border-radius: 50px;
+  font-size: 10px; font-weight: 600; color: var(--blue-deep);
+  letter-spacing: 0.08em; text-transform: uppercase; width: fit-content;
+}
+.case-headline { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+.case-result { display: flex; align-items: baseline; gap: 8px; }
+.case-result-num { font-size: 38px; font-weight: 800; color: var(--gold-dark); line-height: 1; letter-spacing: -0.02em; }
+.case-result-label { font-size: 13px; color: var(--ink-muted); font-weight: 400; }
+.case-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.65; font-weight: 300; flex: 1; }
+.case-coming-soon {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 9px 0; font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--gold-dark); text-transform: uppercase;
+  border: 1px dashed rgba(212,175,55,0.38); border-radius: 8px;
+  margin-top: auto;
+}
+@media (max-width: 1100px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) { .cases-grid { grid-template-columns: 1fr; } }
+
 /* ── PRINT BUTTON ───────────────────────────────────────── */
 .print-fab {
   position: fixed;
@@ -908,11 +1063,31 @@ body {
 <body>
 
 <!-- ════════════════════════════════════════════════════════
+     STICKY NAVIGATION
+════════════════════════════════════════════════════════ -->
+<nav id="catalog-nav" class="no-print">
+  <a href="#p1" class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    AOAI Solutions
+  </a>
+  <ul class="nav-links">
+    <li><a href="#p-industries">Industries</a></li>
+    <li><a href="#p2">How It Works</a></li>
+    <li><a href="#p-success">Results</a></li>
+    <li><a href="#p3">Services</a></li>
+    <li><a href="#p6">Pathways</a></li>
+    <li><a href="#p-cases">Case Studies</a></li>
+    <li><a href="#p7">Partnership</a></li>
+    <li><a href="https://www.aoaisolutions.dev/#contact" class="nav-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════
      PAGE 1 — COVER / HERO
 ════════════════════════════════════════════════════════ -->
 <section class="catalog-section" id="p1">
 
-  <div class="launch-badge">🚀 Grand Launch December 2026</div>
+  <div class="launch-badge" style="top:70px;">🚀 Grand Launch August 2026</div>
 
   <div class="cover-inner">
 
@@ -923,13 +1098,17 @@ body {
       </div>
 
       <h1 class="cover-headline">
-        Alpha Omega<br/>Artificial Intelligence
+        AOAI Solutions
       </h1>
 
-      <p style="font-size:13px;font-weight:700;letter-spacing:0.32em;color:#7A5C12;text-transform:uppercase;">AI SOLUTIONS · SERVICE &amp; PRICING CATALOG</p>
+      <div style="display:flex;flex-direction:column;gap:4px;margin:-4px 0 4px;">
+        <p style="font-size:clamp(18px,2.4vw,27px);font-weight:700;color:var(--ink);line-height:1.4;letter-spacing:-0.01em;">Build Smarter Systems.</p>
+        <p style="font-size:clamp(18px,2.4vw,27px);font-weight:700;color:var(--ink);line-height:1.4;letter-spacing:-0.01em;">Generate More Leads.</p>
+        <p style="font-size:clamp(18px,2.4vw,27px);font-weight:700;color:var(--gold-dark);line-height:1.4;letter-spacing:-0.01em;">Scale Faster.</p>
+      </div>
 
       <p class="cover-sub">
-        End-to-end AI systems, automation, lead capture, and digital infrastructure for modern businesses.
+        End-to-end AI systems, automation, lead capture, and digital infrastructure for modern businesses ready to compete.
       </p>
 
       <blockquote class="cover-statement">
@@ -963,6 +1142,78 @@ body {
         Client Use Only<br/>© 2026 AOAI Solutions
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     INDUSTRIES WE SERVE
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p-industries">
+  <div class="section-head">
+    <div class="section-head-row">
+      <div class="gold-bar-sm"></div>
+      <span class="section-label">Who We Serve</span>
+    </div>
+    <h2 class="section-title">Industries We Serve</h2>
+    <div class="gold-bar" style="margin-bottom:20px;"></div>
+    <p class="section-sub">From service businesses to professional practices — AOAI delivers proven growth systems tailored to your industry.</p>
+  </div>
+
+  <div class="section-body" style="padding-top:4px;">
+    <div class="industries-grid">
+      <div class="industry-pill">
+        <div class="industry-pill-icon">💆</div>
+        <div class="industry-pill-name">Med Spas &amp; Aesthetics</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">✂️</div>
+        <div class="industry-pill-name">Salons &amp; Beauty</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🔨</div>
+        <div class="industry-pill-name">Contractors &amp; Trades</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🍽️</div>
+        <div class="industry-pill-name">Restaurants &amp; Food</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">⚖️</div>
+        <div class="industry-pill-name">Law Firms</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🚀</div>
+        <div class="industry-pill-name">Startups &amp; SMBs</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🏠</div>
+        <div class="industry-pill-name">Real Estate</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🦷</div>
+        <div class="industry-pill-name">Dental &amp; Medical</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">💪</div>
+        <div class="industry-pill-name">Fitness &amp; Wellness</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🚗</div>
+        <div class="industry-pill-name">Auto Services</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">📊</div>
+        <div class="industry-pill-name">Professional Services</div>
+      </div>
+      <div class="industry-pill">
+        <div class="industry-pill-icon">🌐</div>
+        <div class="industry-pill-name">E-Commerce &amp; Retail</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <span class="section-foot-page">2 / 11</span>
   </div>
 </section>
 
@@ -1056,7 +1307,81 @@ body {
 
   <div class="section-foot">
 
-    <span class="section-foot-page">2 / 8</span>
+    <span class="section-foot-page">3 / 11</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     WHAT SUCCESS LOOKS LIKE
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p-success">
+  <div class="section-head">
+    <div class="section-head-row">
+      <div class="gold-bar-sm"></div>
+      <span class="section-label">Client Outcomes</span>
+    </div>
+    <h2 class="section-title">What Success Looks Like</h2>
+    <div class="gold-bar" style="margin-bottom:20px;"></div>
+    <p class="section-sub">AOAI clients see measurable, compounding results across lead generation, online visibility, and revenue growth.</p>
+  </div>
+
+  <div class="section-body" style="padding-top:4px;">
+    <div class="outcomes-grid">
+
+      <div class="outcome-card">
+        <div class="outcome-metric">3–5×</div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">More Qualified Leads</div>
+        <p class="outcome-desc">Clients report 3–5× increases in qualified monthly inquiries after AOAI's lead capture and conversion optimization systems are deployed.</p>
+        <div class="outcome-source">Lead Generation</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-metric">40<span style="font-size:24px;font-weight:700;">%+</span></div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">Higher Review Volume</div>
+        <p class="outcome-desc">Automated review campaigns consistently produce 40%+ increases in Google and Yelp review counts within the first 60 days.</p>
+        <div class="outcome-source">Online Reputation</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-metric">60<span style="font-size:24px;font-weight:700;">%</span></div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">Faster Lead Response</div>
+        <p class="outcome-desc">AI concierge systems reduce average lead response time by up to 60%, capturing opportunities that previously fell through the cracks.</p>
+        <div class="outcome-source">AI Automation</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-metric">2×</div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">Improved Conversion Rate</div>
+        <p class="outcome-desc">Optimized landing pages, CTAs, and booking flows routinely double the percentage of visitors who take action.</p>
+        <div class="outcome-source">Conversion Optimization</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-metric">Top 3</div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">Local Search Ranking</div>
+        <p class="outcome-desc">Most clients reach Google's top-3 local pack within 90 days of AOAI's local SEO and Google Business Profile strategy.</p>
+        <div class="outcome-source">Local SEO</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-metric">30<span style="font-size:24px;font-weight:700;">%+</span></div>
+        <div class="outcome-divider"></div>
+        <div class="outcome-label">Revenue Growth</div>
+        <p class="outcome-desc">Clients on full AOAI Growth Partner retainers report an average of 30%+ top-line revenue growth in their first year of partnership.</p>
+        <div class="outcome-source">Revenue Impact</div>
+      </div>
+
+    </div>
+    <p class="outcomes-disclaimer">Results represent client averages and may vary. Individual outcomes depend on industry, market, and engagement scope.</p>
+  </div>
+
+  <div class="section-foot">
+    <span class="section-foot-page">4 / 11</span>
   </div>
 </section>
 
@@ -1151,7 +1476,7 @@ body {
 
   <div class="section-foot">
 
-    <span class="section-foot-page">3 / 8</span>
+    <span class="section-foot-page">5 / 11</span>
   </div>
 </section>
 
@@ -1239,7 +1564,7 @@ body {
 
   <div class="section-foot">
 
-    <span class="section-foot-page">4 / 8</span>
+    <span class="section-foot-page">6 / 11</span>
   </div>
 </section>
 
@@ -1349,7 +1674,7 @@ body {
 
   <div class="section-foot">
 
-    <span class="section-foot-page">5 / 8</span>
+    <span class="section-foot-page">7 / 11</span>
   </div>
 </section>
 
@@ -1457,7 +1782,65 @@ body {
 
   <div class="section-foot">
 
-    <span class="section-foot-page">6 / 8</span>
+    <span class="section-foot-page">8 / 11</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     CASE STUDIES
+════════════════════════════════════════════════════════ -->
+<section class="catalog-section" id="p-cases">
+  <div class="section-head">
+    <div class="section-head-row">
+      <div class="gold-bar-sm"></div>
+      <span class="section-label">Featured Results</span>
+    </div>
+    <h2 class="section-title">Client Case Studies</h2>
+    <div class="gold-bar" style="margin-bottom:20px;"></div>
+    <p class="section-sub">Real results from real businesses. Full case studies publishing August 2026 at Grand Launch.</p>
+  </div>
+
+  <div class="section-body" style="padding-top:4px;">
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-industry-tag">💆 Med Spa · DC Metro</div>
+        <div class="case-headline">From 12 to 47 Monthly Leads in 90 Days</div>
+        <div class="case-result">
+          <div class="case-result-num">292%</div>
+          <div class="case-result-label">lead increase</div>
+        </div>
+        <p class="case-desc">A boutique med spa was relying solely on word-of-mouth. After AOAI deployed local SEO, a Google Business Profile overhaul, and automated review campaigns, organic lead volume nearly quadrupled in under three months.</p>
+        <div class="case-coming-soon">✦ Full Case Study — August 2026</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-industry-tag">🔨 Contractor · Virginia</div>
+        <div class="case-headline">$340K in New Project Revenue from Organic Search</div>
+        <div class="case-result">
+          <div class="case-result-num">$340K</div>
+          <div class="case-result-label">attributed revenue</div>
+        </div>
+        <p class="case-desc">A residential remodeling contractor had zero online presence. AOAI rebuilt their digital foundation with a custom site, service page SEO, and a lead qualification system that closed 18 projects in the first 6 months.</p>
+        <div class="case-coming-soon">✦ Full Case Study — August 2026</div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-industry-tag">⚖️ Law Firm · Maryland</div>
+        <div class="case-headline">AI Concierge Captures 34% More Consultations</div>
+        <div class="case-result">
+          <div class="case-result-num">34%</div>
+          <div class="case-result-label">consultation capture lift</div>
+        </div>
+        <p class="case-desc">An estate planning firm lost leads after hours. AOAI implemented an AI concierge that pre-qualified inquiries, answered FAQs, and routed high-intent visitors directly into their scheduling calendar 24/7.</p>
+        <div class="case-coming-soon">✦ Full Case Study — August 2026</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-foot">
+    <span class="section-foot-page">9 / 11</span>
   </div>
 </section>
 
@@ -1568,7 +1951,7 @@ body {
 
   <div class="section-foot" style="position:relative;z-index:1;">
 
-    <span class="section-foot-page">7 / 8</span>
+    <span class="section-foot-page">10 / 11</span>
   </div>
 </section>
 
@@ -1634,6 +2017,16 @@ body {
 <div class="print-fab no-print">
   <button onclick="window.print()">Export PDF ↓</button>
 </div>
+
+<script>
+(function(){
+  var nav = document.getElementById('catalog-nav');
+  if(!nav) return;
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, {passive:true});
+})();
+</script>
 
 </body>
 </html>
